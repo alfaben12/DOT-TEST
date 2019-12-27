@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <table width="100%">
+        <tr>
+            <td><h1>Province</h1></td>
+            <td><h1>City</h1></td>
+        </tr>
+        <tr>
+            <td>
+                <form id="formProvince">
+                    SearchKey: <input type="text" name="searchKey">
+                    <button>Search</button>
+                </form>
+            </td>
+            <td>
+                <form id="formCity">
+                    SearchKey: <input type="text" name="searchKey">
+                    <button>Search</button>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td id="listProvinces"></td>
+            <td id="listCities"></td>
+        </tr>
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#formProvince").submit(function(event){
+        $.ajax({
+            url: "http://localhost:3009/provinces", 
+            data: $(this).serialize(),
+            type: 'GET',
+            dataType: 'json',
+            success: function(result){
+                let html = '';
+
+                for (let i = 0; i < result.length; i++) {
+                    html += result[i].province + `<br/>`;
+                }
+                $("#listProvinces").empty().append(html);
+            }
+        });
+        event.preventDefault();
+    });
+
+    $("#formCity").submit(function(event){
+        $.ajax({
+            url: "http://localhost:3009/cities", 
+            data: $(this).serialize(),
+            type: 'GET',
+            dataType: 'json',
+            success: function(result){
+                let html = '';
+
+                for (let i = 0; i < result.length; i++) {
+                    html += result[i].city_name + `<br/>`;
+                }
+                $("#listCities").empty().append(html);
+            }
+        });
+        event.preventDefault();
+
+    });
+});
+</script>
+</body>
+</html>
