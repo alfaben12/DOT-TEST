@@ -1,4 +1,8 @@
 # Algorithmic Test
+# SOAL NOMOR 1
 
-### 1. Clone repository
-### 2. Buka file algorithmic.php yang sudah di clone
+```bash
+1. Clone & buka
+2. jalankan file algorithmic.php
+NB: run on port 3009
+```
