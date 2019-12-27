@@ -4,5 +4,4 @@
 ```bash
 1. Clone & buka
 2. jalankan file algorithmic.php
-NB: run on port 3009
 ```
